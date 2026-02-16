@@ -3,6 +3,7 @@ import Chat from "./pages/Chat";
 import ProtectedRoute from "./components/ProtectedRoute";
 import { useAuth } from "./context/authContext";
 import Login from "./pages/login";
+import Register from "./pages/Register";
 
 function App() {
   const { token } = useAuth();
@@ -15,6 +16,11 @@ function App() {
       <Route 
         path="/login" 
         element={token ? <Navigate to="/" /> : <Login />} 
+      />
+
+       <Route 
+        path="/register" 
+        element={<Register />} 
       />
 
       {/* Private Route */}
