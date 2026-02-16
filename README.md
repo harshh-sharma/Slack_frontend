@@ -1,5 +1,8 @@
 # Complete Frontend
 
+# Teck Stack I use
+    - React.js and TailwindCss for styling
+
 - Frontend functionality
     - Register 
        - Admin can register with required feilds like name, email,password and Organization name
