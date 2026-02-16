@@ -1,12 +1,34 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { Routes, Route, Navigate } from "react-router-dom";
+import Chat from "./pages/Chat";
+import ProtectedRoute from "./components/ProtectedRoute";
+import { useAuth } from "./context/authContext";
+import Login from "./pages/login";
 
 function App() {
+  const { token } = useAuth();
+  console.log("Token", token)
+
   return (
-    <h1></h1>
-  )
+    <Routes>
+      
+      {/* Public Route */}
+      <Route 
+        path="/login" 
+        element={token ? <Navigate to="/" /> : <Login />} 
+      />
+
+      {/* Private Route */}
+      <Route
+        path="/"
+        element={
+          <ProtectedRoute>
+            <Chat />
+          </ProtectedRoute>
+        }
+      />
+
+    </Routes>
+  );
 }
 
-export default App
+export default App;
